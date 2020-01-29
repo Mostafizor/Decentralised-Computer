@@ -69,8 +69,3 @@ def test_push_instruction_last():
     with pytest.raises(RuntimeError) as excinfo:
         VirtualMachine().runCode([PUSH, 1, PUSH, 2, ADD, PUSH])
     assert "cannot be last" in str(excinfo.value)
-
-
-
-
-

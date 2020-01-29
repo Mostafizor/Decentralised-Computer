@@ -100,27 +100,3 @@ class VirtualMachine(object):
 					return self.state['stack'][-1]
 
 			self.state['programCounter'] += 1
-
-
-# VM = VirtualMachine()
-# print('Result of 4 ADD 3 is:', VM.runCode([PUSH, 3, PUSH, 4, ADD, STOP]))
-# VM = VirtualMachine()
-# print('Result of 4 SUB 3 is:', VM.runCode([PUSH, 3, PUSH, 4, SUB, STOP]))
-# VM = VirtualMachine()
-# print('Result of 4 MUL 3 is:', VM.runCode([PUSH, 3, PUSH, 4, MUL, STOP]))
-# VM = VirtualMachine()
-# print('Result of 4 DIV 3 is:', VM.runCode([PUSH, 3, PUSH, 4, DIV, STOP]))
-# VM = VirtualMachine()
-# print('Result of 4 LT 3 is:', VM.runCode([PUSH, 3, PUSH, 4, LT, STOP]))
-# VM = VirtualMachine()
-# print('Result of 4 GT 3 is:', VM.runCode([PUSH, 3, PUSH, 4, GT, STOP]))
-# VM = VirtualMachine()
-# print('Result of 4 EQ 3 is:', VM.runCode([PUSH, 3, PUSH, 4, EQ, STOP]))
-# VM = VirtualMachine()
-# print('Result of 0 AND 1 is:', VM.runCode([PUSH, 0, PUSH, 1, AND, STOP]))
-# VM = VirtualMachine()
-# print('Result of 0 OR 1 is:', VM.runCode([PUSH, 1, PUSH, 0, LT, STOP]))
-# VM = VirtualMachine()
-# print(VM.runCode([PUSH, 66, JUMP, PUSH, 0, JUMP, PUSH, 'jump successful', STOP]))
-# VM = VirtualMachine()
-# print(VM.runCode([PUSH, 8, PUSH, 1, JUMPI, PUSH, 0, JUMP, PUSH, 'jumpi successful', STOP]))
