@@ -65,7 +65,8 @@ class VirtualMachine(object):
 
 			opCode = self.state['code'][self.state['programCounter']]
 
-			# try detects exceptions when they occur, this allows us to catch the exception and return the result of runCode execution
+			# try detects exceptions when they occur, this allows us to catch the 
+			# exception and return the result of runCode execution
 			try:
 				if opCode == STOP:
 					raise ValueError(EXECUTION_COMPLETE)
