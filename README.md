@@ -1,4 +1,4 @@
-# A simplified Python implementation of the Ethereum decentralised computer.
+# A simplified Python implementation of Ethereum
 
 This repository is the result of my efforts to understand Ethereum by way of implementation.
 
