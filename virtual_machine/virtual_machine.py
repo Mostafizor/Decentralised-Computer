@@ -33,7 +33,12 @@ class VirtualMachine(object):
 		}
 
 	def jump(self):
-		"""Performs a jump given a destination from the stack"""
+		"""Performs a jump given a destination from the stack.
+
+		The jump instruction moves the program counter to another location in the code array. 
+    	It does this by popping one value off the stack which represents the destination (list index).
+		The program counter is then set equal to the destination.
+		"""
 
 		destination = self.state['stack'].pop()
 
@@ -99,9 +104,6 @@ class VirtualMachine(object):
 
 					self.state['stack'].append(result)	
 				elif opCode == JUMP:
-					# The jump instruction moves the program counter to another location in the code array. 
-            				# It does this by popping one value off the stack which represents the destination (list index)
-					# The program counter is then set equal to the destination
 					self.jump()
 				elif opCode == JUMPI:
 					# Only jumps if the condition on the stack is 1
