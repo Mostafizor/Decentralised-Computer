@@ -21,10 +21,10 @@ from constants import (
 
 class VirtualMachine(object):
 	"""The Virtual Machine Executes Smart Contract Code"""
-
+	
 	def __init__(self):
 		"""The state field keeps track of changes in data as the Virtual Machine executes"""
-
+		
 		self.state = {
 			'programCounter': 0,
 			'executionCounter': 0,
@@ -33,13 +33,8 @@ class VirtualMachine(object):
 		}
 
 	def jump(self):
-		"""Performs a jump given a destination from the stack.
-
-		The jump instruction moves the program counter to another location in the code array.
-		It does this by popping one value off the stack which represents the destination (list index).
-		The program counter is then set equal to the destination.
-		"""
-
+		"""Performs a jump given a destination from the stack."""
+		
 		destination = self.state['stack'].pop()
 
 		if destination < 0 or destination > len(self.state['code']):
@@ -116,7 +111,7 @@ class VirtualMachine(object):
 					break
 			except ValueError:
 					# Return the result of runCode if execution completed successfully (final value on stack)
-					# Need to replace ValueError with custom exception
+					# TO DO: replace ValueError with custom exception
 					print(EXECUTION_COMPLETE)
 					return self.state['stack'][-1]
 
