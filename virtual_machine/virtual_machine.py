@@ -35,8 +35,8 @@ class VirtualMachine(object):
 	def jump(self):
 		"""Performs a jump given a destination from the stack.
 
-		The jump instruction moves the program counter to another location in the code array. 
-    	It does this by popping one value off the stack which represents the destination (list index).
+		The jump instruction moves the program counter to another location in the code array.
+		It does this by popping one value off the stack which represents the destination (list index).
 		The program counter is then set equal to the destination.
 		"""
 
