@@ -1,7 +1,7 @@
 import pytest
 from virtual_machine import VirtualMachine
 from opcode_map import (
-    STOP,
+    	STOP,
 	ADD,
 	SUB,
 	MUL,
