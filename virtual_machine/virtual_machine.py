@@ -20,7 +20,11 @@ from constants import (
 )
 
 class VirtualMachine(object):
+	"""The Virtual Machine Executes Smart Contract Code"""
+
 	def __init__(self):
+		"""The state field keeps track of changes in data as the Virtual Machine executes"""
+
 		self.state = {
 			'programCounter': 0,
 			'executionCounter': 0,
@@ -29,6 +33,8 @@ class VirtualMachine(object):
 		}
 
 	def jump(self):
+		"""Performs a jump given a destination from the stack"""
+
 		destination = self.state['stack'].pop()
 
 		if destination < 0 or destination > len(self.state['code']):
@@ -38,8 +44,12 @@ class VirtualMachine(object):
 		self.state['programCounter'] -= 1
 
 	def runCode(self, code):
+		"""Accepts and executes smart contract code"""
+
+		# Update the state of the Virtual Machine with the code to be executed
 		self.state['code'] = code
 
+		# Iterate through the code array which contains instructions (opCode)
 		while self.state['programCounter'] < len(self.state['code']):
 			self.state['executionCounter'] += 1
 
@@ -50,6 +60,7 @@ class VirtualMachine(object):
 
 			opCode = self.state['code'][self.state['programCounter']]
 
+			# try detects exceptions when they occur, this allows us to catch the exception and return the result of runCode execution
 			try:
 				if opCode == STOP:
 					raise ValueError(EXECUTION_COMPLETE)
@@ -62,6 +73,7 @@ class VirtualMachine(object):
 					value = self.state['code'][self.state['programCounter']]
 					self.state['stack'].append(value)
 				elif opCode in (ADD, SUB, MUL, DIV, PUSH, LT, GT, EQ, AND, OR):
+					# Pop two values off stack, perform an opCode and push result back onto stack
 					a = self.state['stack'].pop()
 					b = self.state['stack'].pop()
 
@@ -87,8 +99,12 @@ class VirtualMachine(object):
 
 					self.state['stack'].append(result)	
 				elif opCode == JUMP:
+					# The jump instruction moves the program counter to another location in the code array. 
+            		# It does this by popping one value off the stack which represents the destination (list index)
+					# The program counter is then set equal to the destination
 					self.jump()
 				elif opCode == JUMPI:
+					# Only jumps if the condition on the stack is 1
 					condition = self.state['stack'].pop()
 
 					if condition == 1:
@@ -96,6 +112,8 @@ class VirtualMachine(object):
 				else:
 					break
 			except ValueError:
+					# Return the result of runCode if execution completed successfully (final value on stack)
+					# Need to replace ValueError with custom exception
 					print(EXECUTION_COMPLETE)
 					return self.state['stack'][-1]
 
