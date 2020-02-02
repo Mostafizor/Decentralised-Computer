@@ -12,6 +12,3 @@ def keccakHash(data):
     hash.update(sortCharacters(data).encode('utf-8'))
 
     return hash.hexdigest()
-
-print(keccakHash({'foo': 2, 'boo':3}))
-print(keccakHash({'boo': 3, 'foo': 2}))
