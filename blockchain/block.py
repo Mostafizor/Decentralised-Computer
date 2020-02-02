@@ -5,5 +5,4 @@ class Block(object):
     @staticmethod
     def genesis(GENESIS_DATA):
         return Block(GENESIS_DATA)
-
     

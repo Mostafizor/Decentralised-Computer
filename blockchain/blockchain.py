@@ -4,5 +4,3 @@ class Blockchain(object):
     
     def addBlock(self, block):
         self.chain.append(block)
-    
-    
